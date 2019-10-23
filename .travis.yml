@@ -19,7 +19,7 @@ before_install:
 
 script:
   - if [ BUILD==true ]; then
-    bash build.sh 2>&1;
+    bash build.sh;
     else
     echo "Build skipped";
     fi
