@@ -2,6 +2,8 @@
 
 set -e
 
+RELEASE_VERSION=$(cat release_version.txt)
+
 echo "1"
 wget https://github.com/restic/restic/releases/download/v$RELEASE_VERSION/restic-$RELEASE_VERSION.tar.gz
 echo "2"
