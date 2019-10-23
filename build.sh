@@ -3,7 +3,7 @@
 set -e
 
 echo "1"
-wget -q https://github.com/restic/restic/releases/download/v$RELEASE_VERSION/restic-$RELEASE_VERSION.tar.gz
+wget https://github.com/restic/restic/releases/download/v$RELEASE_VERSION/restic-$RELEASE_VERSION.tar.gz
 echo "2"
 tar -xzf restic-$RELEASE_VERSION.tar.gz
 echo "3"
