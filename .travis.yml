@@ -9,6 +9,8 @@ cache:
     - $HOME/gopath/pkg/mod
 
 before_install:
+  - sudo apt-get update
+  - sudo apt-get install build-essential python3 tar wget
   - python3 version.py
   - RELEASE_VERSION=$(cat release_version.txt)
   - FTP_VERSION=$(cat ftp_version.txt)
@@ -18,6 +20,7 @@ before_install:
     fi
 
 script:
+  - RELEASE_VERSION=$(cat release_version.txt)
   - if [ BUILD==true ]; then
     bash build.sh;
     else
