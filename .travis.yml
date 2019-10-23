@@ -13,14 +13,20 @@ before_install:
   - RELEASE_VERSION=$(cat release_version.txt)
   - FTP_VERSION=$(cat ftp_version.txt)
   - BUILD=true
-  - if [ $RELEASE_VERSION == $FTP_VERSION ]; then BUILD=false; fi
+  - if [ $RELEASE_VERSION == $FTP_VERSION ]; then
+    BUILD=false;
+    fi
 
 script:
-  - if [ BUILD==true ]; then bash build.sh; else; echo "Build skipped"; fi
+  - if [ BUILD==true ]; then
+    bash build.sh;
+    else
+    echo "Build skipped";
+    fi
 
 deploy:
   provider: script  
-  script: if [ BUILD==true ]; then sudo apt-get install -y lftp; bash ftp_upload.sh; else; echo "Deploy skipped"; fi
+  script: if [ BUILD==true ]; then sudo apt-get install -y lftp; bash ftp_upload.sh; else echo "Deploy skipped"; fi
   skip_cleanup: true
 
 notifications:
