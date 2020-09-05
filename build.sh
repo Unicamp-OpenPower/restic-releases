@@ -1,23 +1,18 @@
 #!/usr/bin/env bash
 
 set -e
+github_version=$(cat github_version.txt)
+ftp_version=$(cat ftp_version.txt)
 
-RELEASE_VERSION=$(cat release_version.txt)
+if [ $github_version != $ftp_version ]
+then
+  wget https://github.com/restic/restic/releases/download/v$github_version/restic-$github_version.tar.gz
+  tar -xzf restic-$github_version.tar.gz
+  mv restic-$github_version restic
+  cd restic
+  make all
+  mkdir output
+  mv restic output/restic-$github_version
+  ls -la output
+fi
 
-echo "1"
-wget https://github.com/restic/restic/releases/download/v$RELEASE_VERSION/restic-$RELEASE_VERSION.tar.gz
-echo "2"
-tar -xzf restic-$RELEASE_VERSION.tar.gz
-echo "3"
-mv restic-$RELEASE_VERSION restic
-echo "4"
-cd restic
-echo "5"
-make all
-echo "6"
-mkdir output
-echo "7"
-mv restic output/restic-$RELEASE_VERSION
-echo "8"
-ls -la output
-echo "9"
