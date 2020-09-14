@@ -22,7 +22,7 @@ then
   sudo mv empacotar-rpm.sh $LOCALPATH
   cd $LOCALPATH
   sudo ./empacotar-deb.sh restic restic-$github_version $github_version " "
-  sudo ./empacotar-rpm.sh restic restic-$github_version $github_version " " "restic is a program that does backups right"
+  sudo ./empacotar-rpm.sh restic restic-$github_version $github_version " " "Fast, secure, efficient backup program."
   if [ $github_version > $ftp_version ]
   then
     lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O $REMOTEPATH $LOCALPATH/restic-$github_version"
