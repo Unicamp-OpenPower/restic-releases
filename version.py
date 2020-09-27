@@ -6,7 +6,7 @@ html = str(
     requests.get('https://github.com/restic/restic/releases/latest')
     .content)
 index = html.find('href="/restic/restic/tree/v')
-github_version = html[index + 27:index + 32]
+github_version = html[index + 27:index + 33]
 file = open('github_version.txt', 'w')
 file.writelines(github_version)
 file.close()
