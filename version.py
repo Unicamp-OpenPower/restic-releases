@@ -17,13 +17,17 @@ html = str(
         'https://oplab9.parqtec.unicamp.br/pub/ppc64el/restic/'
     ).content)
 index = html.rfind('restic-')
-ftp_version = html[index + 7:index + 12]
+ftp_version = html[index + 7:index + 13]
 file = open('ftp_version.txt', 'w')
 file.writelines(ftp_version)
 file.close()
 
 # find and save de oldest version on the FTP server
 index = html.find('restic-')
+if (html[index + 12] == '\"'):
+    delete = html[index + 7:index + 12]
+else
+    delete = html[index + 7:index + 13]
 delete = html[index + 7:index + 12]
 file = open('delete.txt', 'w')
 file.writelines(delete)
