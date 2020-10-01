@@ -26,7 +26,7 @@ file.close()
 index = html.find('restic-')
 if (html[index + 12] == '\"'):
     delete = html[index + 7:index + 12]
-else
+else:
     delete = html[index + 7:index + 13]
 delete = html[index + 7:index + 12]
 file = open('delete.txt', 'w')
