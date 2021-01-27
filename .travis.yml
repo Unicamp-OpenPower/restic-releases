@@ -1,8 +1,8 @@
 language: go
 os: linux
 arch: ppc64le
-dist: bionic
-go: "1.14.x"
+dist: focal
+go: "1.15.x"
 env: RESTIC_TEST_FUSE=0 RESTIC_TEST_CLOUD_BACKENDS=0
 cache:
   directories:
@@ -19,7 +19,7 @@ script:
   - bash build.sh
 
 deploy:
-  provider: script  
+  provider: script
   script: sudo apt-get install -y lftp; bash ftp_upload.sh
   skip_cleanup: true
 
